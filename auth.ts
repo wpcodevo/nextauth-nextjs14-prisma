@@ -53,27 +53,41 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-  // callbacks: {
-  //   session: ({ session, token }) => {
-  //     return {
-  //       ...session,
-  //       user: {
-  //         ...session.user,
-  //         id: token.id,
-  //         randomKey: token.randomKey,
-  //       },
-  //     };
-  //   },
-  //   jwt: ({ token, user }) => {
-  //     if (user) {
-  //       const u = user as unknown as any;
-  //       return {
-  //         ...token,
-  //         id: u.id,
-  //         randomKey: u.randomKey,
-  //       };
-  //     }
-  //     return token;
-  //   },
-  // },
+  callbacks: {
+    authorized({ auth, request: { nextUrl } }) {
+      const isLoggedIn = !!auth?.user;
+      const paths = ["/profile", "/client-side"];
+      const isProtected = paths.some((path) =>
+        nextUrl.pathname.startsWith(path)
+      );
+
+      if (isProtected && !isLoggedIn) {
+        const redirectUrl = new URL("/api/auth/signin", nextUrl.origin);
+        redirectUrl.searchParams.append("callbackUrl", nextUrl.href);
+        return Response.redirect(redirectUrl);
+      }
+      return true;
+    },
+    session: ({ session, token }) => {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          randomKey: token.randomKey,
+        },
+      };
+    },
+    jwt: ({ token, user }) => {
+      if (user) {
+        const u = user as unknown as any;
+        return {
+          ...token,
+          id: u.id,
+          randomKey: u.randomKey,
+        };
+      }
+      return token;
+    },
+  },
 });
