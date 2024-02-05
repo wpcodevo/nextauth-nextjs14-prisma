@@ -6,20 +6,10 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { TypeOf, object, string } from 'zod';
 import { signIn } from 'next-auth/react';
+import { LoginUserInput, loginUserSchema } from '@/lib/user-schema';
 
-const loginUserSchema = object({
-  email: string({ required_error: 'Email is required' })
-    .min(1, 'Email is required')
-    .email('Invalid email or password'),
-  password: string({ required_error: 'Password is required' }).min(
-    1,
-    'Password is required'
-  ),
-});
 
-type LoginUserInput = TypeOf<typeof loginUserSchema>;
 
 export const LoginForm = () => {
   const router = useRouter();
