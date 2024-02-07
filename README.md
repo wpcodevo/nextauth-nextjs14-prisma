@@ -63,3 +63,25 @@ In this tutorial, you'll discover how to set up NextAuth v5 in Next.js 14, confi
 
 Read the entire article here: [https://codevoweb.com/implement-authentication-with-nextauth-in-nextjs-14/](https://codevoweb.com/implement-authentication-with-nextauth-in-nextjs-14/)
 
+## 3. Set up Google and GitHub OAuth with NextAuth in Next.js 14
+
+In this comprehensive guide, you will learn how to set up Google and GitHub OAuth with NextAuth v5 in your Next.js 14 project. Incorporating OAuth sign-in options into your application can eliminate the need for users to sign in with their email and password.
+
+![Set up Google and GitHub OAuth with NextAuth in Next.js 14](https://codevoweb.com/wp-content/uploads/2024/02/Set-up-Google-and-GitHub-OAuth-with-NextAuth-in-Next.js-14.webp)
+
+### Topics Covered
+
+- How to Run the Project on Your Computer
+- Demo of the OAuth Flow
+- Obtaining Google and GitHub OAuth Credentials
+  - Google OAuth Client ID and Secret
+  - GitHub OAuth Client ID and Secret
+- Initializing NextAuth.js in Next.js 14
+- Adding Google and GitHub Providers to NextAuth
+- Modifying the JWT Payload and Session Data
+- Implementing Google and GitHub OAuth Sign-in Options
+- Protecting Routes with NextAuth Middleware
+- Conclusion
+
+Read the entire article here: [https://codevoweb.com/google-and-github-oauth-with-nextauth-in-nextjs-14/](https://codevoweb.com/google-and-github-oauth-with-nextauth-in-nextjs-14/)
+
